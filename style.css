@@ -1,0 +1,470 @@
+/* =========================================
+   COLORS & VARIABLES
+========================================= */
+
+:root {
+    --background: #f6f1e8;
+    --paper: #faf7f0;
+
+    --text: #29251f;
+    --muted: #81786c;
+    --accent: #8a5a44;
+
+    --border: #ddd4c7;
+
+    --max-width: 900px;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 1.5rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
+
+    background: rgba(246, 241, 232, 0.9);
+
+    backdrop-filter: blur(8px);
+}
+
+.site-title {
+    color: var(--text);
+
+    font-size: 1rem;
+
+    text-decoration: none;
+
+    letter-spacing: 0.03em;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    width: 100%;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+    max-width: var(--max-width);
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding: 8rem 2rem 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+
+    color: var(--accent);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.7rem;
+    font-weight: bold;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.intro h1 {
+    margin: 0;
+
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+
+    font-weight: normal;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.05em;
+}
+
+.intro>p:not(.eyebrow) {
+    max-width: 520px;
+
+    margin: 2rem 0;
+
+    color: var(--muted);
+
+    font-size: 1.15rem;
+}
+
+.begin-reading {
+    width: fit-content;
+
+    margin-top: 1rem;
+
+    color: var(--accent);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.05em;
+
+    text-decoration: none;
+}
+
+.begin-reading:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   POEM CONTAINER
+========================================= */
+
+/*
+  This is the important part.
+
+  Each poem is treated like a horizontal page.
+
+  On phones, users can naturally swipe left/right.
+
+  scroll-snap makes the poem "snap" into place.
+*/
+
+.poem-container {
+    width: 100%;
+
+    display: flex;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+}
+
+.poem-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================
+   INDIVIDUAL POEM
+========================================= */
+
+.poem {
+    flex: 0 0 100%;
+
+    min-height: 100vh;
+
+    padding: 7rem 2rem 5rem;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 80% 20%,
+            rgba(138, 90, 68, 0.05),
+            transparent 30%);
+}
+
+
+/* =========================================
+   POEM HEADER
+========================================= */
+
+.poem-header {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto 2rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.poem-number {
+    color: var(--accent);
+}
+
+
+/* =========================================
+   POEM CONTENT
+========================================= */
+
+.poem-content {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+.poem-content h2 {
+    margin: 0;
+
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.035em;
+}
+
+.poem-author {
+    margin: 1rem 0 3.5rem;
+
+    color: var(--accent);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   POEM TEXT
+========================================= */
+
+.poem-text {
+    font-size: 1.05rem;
+
+    color: #403a33;
+}
+
+.poem-text p {
+    margin: 0 0 2rem;
+}
+
+.poem-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   SWIPE HINT
+========================================= */
+
+.swipe-hint {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 3rem auto 0;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    text-align: right;
+}
+
+.swipe-hint span {
+    color: var(--accent);
+
+    margin: 0 0.4rem;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about {
+    max-width: 700px;
+
+    min-height: 60vh;
+
+    margin: 0 auto;
+
+    padding: 8rem 2rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.about h2 {
+    margin: 0 0 1.5rem;
+
+    font-size: 3rem;
+
+    font-weight: normal;
+}
+
+.about p:last-child {
+    max-width: 500px;
+
+    color: var(--muted);
+
+    font-size: 1.1rem;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 2rem;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .site-header {
+        padding: 1.2rem 1.25rem;
+    }
+
+    nav {
+        gap: 1rem;
+    }
+
+    .intro {
+        padding: 7rem 1.5rem 4rem;
+    }
+
+    .intro h1 {
+        font-size: 3.5rem;
+    }
+
+    .poem {
+        padding: 7rem 1.5rem 4rem;
+    }
+
+    .poem-content h2 {
+        font-size: 2.6rem;
+    }
+
+    .poem-author {
+        margin-bottom: 2.5rem;
+    }
+
+    .poem-text {
+        font-size: 1rem;
+    }
+
+    .poem-text p {
+        margin-bottom: 1.75rem;
+    }
+
+    .swipe-hint {
+        margin-top: 2rem;
+    }
+
+}
